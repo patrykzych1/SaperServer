@@ -42,5 +42,13 @@ public class SaperApiController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @CrossOrigin
+    @GetMapping(value = "/dif", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<List<ScoreDto>> getScoresByDifficultyLevel(@RequestParam String dl) {
+        List<ScoreDto> scoresDto = saperService.findAllByDifficultyLevel(dl);
+
+        return new ResponseEntity<>(scoresDto, HttpStatus.OK);
+    }
+
 
 }
